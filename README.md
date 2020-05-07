@@ -16,8 +16,11 @@ Simply install the extension with Composer or the [Extension Manager](https://ex
 
 `composer require ichhabrecht/core-upgrader`
 
+This extension depends on [TYPO3 Console](https://github.com/TYPO3-Console/TYPO3-Console).
+The typo3cms binary will be installed in the specified bin-dir (by default `vendor/bin`).
+
 ## Usage
 
-## Community
+You only need to run the upgrade command:
 
-- Thanks to [elementare teilchen GmbH](https://www.elementare-teilchen.de) that sponsors the maintenance of this extension
+`typo3cms upgrader:upgrade`

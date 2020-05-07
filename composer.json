@@ -23,6 +23,11 @@
         "typo3/cms-core": "^10.4",
         "helhum/typo3-console": "^6.2.1"
     },
+    "autoload": {
+        "psr-4": {
+            "IchHabRecht\\Upgrader\\": "Classes/"
+        }
+    },
     "replace": {
         "typo3-ter/core-upgrader": "self.version"
     },
