@@ -65,6 +65,7 @@ finder:
     - "*.php"
   exclude:
     - ".Build"
+    - "Classes/Updates"
     - "doc"
     - "Resources"
   not-name:
