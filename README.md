@@ -29,6 +29,11 @@ The typo3cms binary will be installed in the specified bin-dir (by default `vend
 
      `typo3cms coreupgrader:upgrade`
 
+ 3. The upgrade command runs necessary TYPO3 upgrade wizards.\
+    It is recommended to run TYPO3 Console upgrade command afterwards to execute confirmable and extension wizards. 
+    
+     `typo3cms upgrade:run all`
+
 ## Community
 
 - Thanks to [elementare teilchen GmbH](https://www.elementare-teilchen.de) that sponsors the maintenance of this extension
