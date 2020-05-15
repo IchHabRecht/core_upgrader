@@ -52,6 +52,7 @@ class UpgradeCommand extends Command
     private function runUpgradeWizards(OutputStyle $io, bool $isInteractive = true)
     {
         $io->title('Running TYPO3 upgrade wizards');
+        $io->newLine();
         $upgradeWizards = require __DIR__ . '/../../Configuration/Upgrades.php';
         foreach ($upgradeWizards as $version => $versionUpgrades) {
             $output = [];
@@ -89,6 +90,9 @@ class UpgradeCommand extends Command
                 }
                 $io->progressFinish();
             }
+
+            $io->success('All wizards were executed successfully.');
+
             if ($io->isVerbose()) {
                 foreach ($output as $class => $wizardOutput) {
                     $io->note(
@@ -99,7 +103,9 @@ class UpgradeCommand extends Command
                     );
                 }
             }
+            $io->newLine();
         }
+        $io->newLine();
     }
 
     private function formatOutput(string $output): string

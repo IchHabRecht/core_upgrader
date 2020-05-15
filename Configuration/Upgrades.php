@@ -52,4 +52,45 @@ return [
             'sysLanguageSorting' => \TYPO3\CMS\v87\Install\Updates\LanguageSortingUpdate::class,
         ],
     ],
+    'v9.5' => [
+        'typo3DbLegacyExtension' => [
+            'typo3DbLegacyExtension' => \TYPO3\CMS\Install\Updates\Typo3DbExtractionUpdate::class,
+        ],
+        'funcExtension' => [
+            'funcExtension' => \TYPO3\CMS\Install\Updates\FuncExtractionUpdate::class,
+        ],
+        'pagesUrltypeField' => [
+            'pagesUrltypeField' => \TYPO3\CMS\Install\Updates\MigrateUrlTypesInPagesUpdate::class,
+        ],
+        'separateSysHistoryFromLog' => [
+            'separateSysHistoryFromLog' => \TYPO3\CMS\Install\Updates\SeparateSysHistoryFromSysLogUpdate::class,
+        ],
+        'rdctExtension' => [
+            'rdctExtension' => \TYPO3\CMS\Install\Updates\RedirectExtractionUpdate::class,
+        ],
+        'pagesLanguageOverlay' => [
+            'pagesLanguageOverlay' => \TYPO3\CMS\Install\Updates\MigratePagesLanguageOverlayUpdate::class,
+        ],
+        'pagesLanguageOverlayBeGroupsAccessRights' => [
+            'pagesLanguageOverlayBeGroupsAccessRights' => \TYPO3\CMS\Install\Updates\MigratePagesLanguageOverlayBeGroupsAccessRights::class,
+        ],
+        'backendLayoutIcons' => [
+            'backendLayoutIcons' => \TYPO3\CMS\Install\Updates\BackendLayoutIconUpdateWizard::class,
+        ],
+        'redirects' => [
+            'redirects' => \TYPO3\CMS\Install\Updates\RedirectsExtensionUpdate::class,
+        ],
+        'adminpanelExtension' => [
+            'adminpanelExtension' => \TYPO3\CMS\Install\Updates\AdminPanelInstall::class,
+        ],
+        'pagesSlugs' => [
+            'pagesSlugs' => \TYPO3\CMS\Install\Updates\PopulatePageSlugs::class,
+        ],
+        'argon2iPasswordHashes' => [
+            'argon2iPasswordHashes' => \TYPO3\CMS\Install\Updates\Argon2iPasswordHashes::class,
+        ],
+        'backendUsersConfiguration' => [
+            'backendUsersConfiguration' => \TYPO3\CMS\Install\Updates\BackendUserConfigurationUpdate::class,
+        ],
+    ],
 ];
