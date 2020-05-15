@@ -93,4 +93,21 @@ return [
             'backendUsersConfiguration' => \TYPO3\CMS\Install\Updates\BackendUserConfigurationUpdate::class,
         ],
     ],
+    'v10.4' => [
+        'rsaauthExtension' => [
+            'rsaauthExtension' => \TYPO3\CMS\Install\Updates\RsaauthExtractionUpdate::class,
+        ],
+        'feeditExtension' => [
+            'feeditExtension' => \TYPO3\CMS\Install\Updates\FeeditExtractionUpdate::class,
+        ],
+        'taskcenterExtension' => [
+            'taskcenterExtension' => \TYPO3\CMS\Install\Updates\TaskcenterExtractionUpdate::class,
+        ],
+        'sysActionExtension' => [
+            'sysActionExtension' => \TYPO3\CMS\Install\Updates\SysActionExtractionUpdate::class,
+        ],
+        'databaseRowsUpdateWizard' => [
+            'databaseRowsUpdateWizard' => \TYPO3\CMS\Install\Updates\DatabaseRowsUpdateWizard::class,
+        ],
+    ],
 ];
