@@ -1,0 +1,7 @@
+2020-05-19         [RELEASE] Release of core_upgrader 1.0.0 (Nicole Cordes)
+2020-05-15 9bdc23b [TASK] Recommend to run all upgrade wizards (Nicole Cordes)
+2020-05-15 511eeeb [FEATURE] Add upgrade wizards for TYPO3 10.4 (Nicole Cordes)
+2020-05-15 dc72a93 [FEATURE] Add upgrade wizards for TYPO3 9.5 (Nicole Cordes)
+2020-05-15 86eeed9 [FEATURE] Add upgrade wizards for TYPO3 8.7 (Nicole Cordes)
+2020-05-15 636513d [FEATURE] Introduce upgrade command (Nicole Cordes)
+2020-05-15 8edb518 [TASK] Add basic extension files (Nicole Cordes)
