@@ -5,6 +5,7 @@ namespace IchHabRecht\Upgrader\Command;
 use Helhum\Typo3Console\Mvc\Cli\CommandDispatcher;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\OutputStyle;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -29,6 +30,12 @@ class UpgradeCommand extends Command
     protected function configure()
     {
         $this->setDescription('Run necessary upgrade wizards');
+        $this->addOption(
+            'force',
+            'f',
+            InputOption::VALUE_NONE,
+            'Force wizards to run, despite being marked as executed before.'
+        );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -36,7 +43,7 @@ class UpgradeCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $this->runUpdatePrepare($io);
-        $this->runUpgradeWizards($io, $input->isInteractive());
+        $this->runUpgradeWizards($io, $input->isInteractive(), $input->getOption('force'));
 
         return 0;
     }
@@ -49,11 +56,21 @@ class UpgradeCommand extends Command
         $io->newLine(2);
     }
 
-    private function runUpgradeWizards(OutputStyle $io, bool $isInteractive = true)
+    private function runUpgradeWizards(OutputStyle $io, bool $isInteractive = true, bool $force = false)
     {
         $io->title('Running TYPO3 upgrade wizards');
         $io->newLine();
         $upgradeWizards = require __DIR__ . '/../../Configuration/Upgrades.php';
+
+        $arguments = [
+            '--no-interaction',
+            '--deny',
+            'all',
+        ];
+        if ($force) {
+            $arguments[] = '--force';
+        }
+
         foreach ($upgradeWizards as $version => $versionUpgrades) {
             $output = [];
             $io->section('Running upgrade to TYPO3 ' . $version);
@@ -65,11 +82,7 @@ class UpgradeCommand extends Command
                     'upgrade:run',
                     array_merge(
                         $identifier,
-                        [
-                            '--no-interaction',
-                            '--deny',
-                            'all',
-                        ]
+                        $arguments
                     )
                 );
             } else {
@@ -78,12 +91,10 @@ class UpgradeCommand extends Command
                     foreach ($upgradeArray as $identifier => $class) {
                         $output[$class] = $this->commandDispatcher->executeCommand(
                             'upgrade:run',
-                            [
-                                $identifier,
-                                '--no-interaction',
-                                '--deny',
-                                'all',
-                            ]
+                            array_merge(
+                                [$identifier],
+                                $arguments
+                            )
                         );
                     }
                     $io->progressAdvance(1);
