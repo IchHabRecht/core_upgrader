@@ -1,3 +1,7 @@
+2020-05-26         [RELEASE] Release of core_upgrader 1.1.0 (Nicole Cordes)
+2020-05-26 bbc2a33 [TASK] Remove dev-master tests from Travis CI configuration (Nicole Cordes)
+2020-05-26 ce29717 [FEATURE] Allow to force update wizards (Nicole Cordes)
+
 2020-05-19         [RELEASE] Release of core_upgrader 1.0.0 (Nicole Cordes)
 2020-05-15 9bdc23b [TASK] Recommend to run all upgrade wizards (Nicole Cordes)
 2020-05-15 511eeeb [FEATURE] Add upgrade wizards for TYPO3 10.4 (Nicole Cordes)
