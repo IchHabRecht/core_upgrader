@@ -75,13 +75,13 @@ class UpgradeCommand extends Command
             $output = [];
             $io->section('Running upgrade to TYPO3 ' . $version);
             if (!$isInteractive) {
-                $identifier = array_map(function ($upgradeArray) {
-                    return key($upgradeArray);
-                }, array_values($versionUpgrades));
+                $identifier = array_filter($versionUpgrades, function ($upgradeArray) {
+                    return class_exists(current($upgradeArray));
+                });
                 $output[$version] = $this->commandDispatcher->executeCommand(
                     'upgrade:run',
                     array_merge(
-                        $identifier,
+                        array_keys($identifier),
                         $arguments
                     )
                 );
@@ -89,13 +89,15 @@ class UpgradeCommand extends Command
                 $io->progressStart(count($versionUpgrades));
                 foreach ($versionUpgrades as $key => $upgradeArray) {
                     foreach ($upgradeArray as $identifier => $class) {
-                        $output[$class] = $this->commandDispatcher->executeCommand(
-                            'upgrade:run',
-                            array_merge(
-                                [$identifier],
-                                $arguments
-                            )
-                        );
+                        if (class_exists($class)) {
+                            $output[$class] = $this->commandDispatcher->executeCommand(
+                                'upgrade:run',
+                                array_merge(
+                                    [$identifier],
+                                    $arguments
+                                )
+                            );
+                        }
                     }
                     $io->progressAdvance(1);
                 }

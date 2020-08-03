@@ -109,5 +109,11 @@ return [
         'databaseRowsUpdateWizard' => [
             'databaseRowsUpdateWizard' => \TYPO3\CMS\Install\Updates\DatabaseRowsUpdateWizard::class,
         ],
+        'TYPO3\\CMS\\Felogin\\Updates\\MigrateFeloginPlugins' => [
+            'TYPO3\\CMS\\Felogin\\Updates\\MigrateFeloginPlugins' => TYPO3\CMS\Felogin\Updates\MigrateFeloginPlugins::class,
+        ],
+        'TYPO3\\CMS\\FrontendLogin\\Updates\\MigrateFeloginPluginsCtype' => [
+            'TYPO3\\CMS\\FrontendLogin\\Updates\\MigrateFeloginPluginsCtype' => TYPO3\CMS\FrontendLogin\Updates\MigrateFeloginPluginsCtype::class,
+        ],
     ],
 ];
