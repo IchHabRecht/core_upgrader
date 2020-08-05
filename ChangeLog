@@ -1,3 +1,7 @@
+2020-08-05         [RELEASE] Release of core_upgrader 1.2.0 (Nicole Cordes)
+2020-08-05 82b356f [TASK] Update supporting files to EXT:my_skeleton 0.4.0 (Nicole Cordes)
+2020-08-03 029f0ce [FEATURE] Add missing TYPO3\CMS updates (Nicole Cordes)
+
 2020-05-26         [RELEASE] Release of core_upgrader 1.1.0 (Nicole Cordes)
 2020-05-26 bbc2a33 [TASK] Remove dev-master tests from Travis CI configuration (Nicole Cordes)
 2020-05-26 ce29717 [FEATURE] Allow to force update wizards (Nicole Cordes)
