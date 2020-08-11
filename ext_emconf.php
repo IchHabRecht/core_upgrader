@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "core_upgrader".
  *
- * Auto generated 05-08-2020 13:47
+ * Auto generated 11-08-2020 15:35
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -18,20 +18,19 @@ $EM_CONF[$_EXTKEY] = array (
   'author_email' => 'typo3@cordes.co',
   'author_company' => 'biz-design',
   'state' => 'stable',
-  'uploadfolder' => 0,
-  'createDirs' => '',
-  'clearcacheonload' => 0,
-  'version' => '1.2.0',
-  'constraints' => 
+  'uploadfolder' => true,
+  'clearcacheonload' => true,
+  'version' => '1.2.1',
+  'constraints' =>
   array (
-    'depends' => 
+    'depends' =>
     array (
       'typo3' => '10.4.0-10.4.99',
     ),
-    'conflicts' => 
+    'conflicts' =>
     array (
     ),
-    'suggests' => 
+    'suggests' =>
     array (
     ),
   ),

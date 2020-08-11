@@ -28,7 +28,7 @@ use TYPO3\CMS\Core\Versioning\VersionState;
  * using "l10n_mode" set to "mergeIfNotBlank" or "exclude".
  * @internal This class is only meant to be used within EXT:install and is not part of the TYPO3 Core API.
  */
-class L10nModeUpdater implements RowUpdaterInterface
+class L10nModeUpdater implements \TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface
 {
     /**
      * List of tables with information about to migrate fields.

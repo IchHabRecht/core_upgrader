@@ -27,7 +27,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
  * using "l10n_mode" set to "mergeIfNotBlank".
  * @internal This class is only meant to be used within EXT:install and is not part of the TYPO3 Core API.
  */
-class ImageCropUpdater implements RowUpdaterInterface
+class ImageCropUpdater implements \TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface
 {
     /**
      * List of tables with information about to migrate fields.
