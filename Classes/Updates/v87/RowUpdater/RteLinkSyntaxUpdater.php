@@ -22,12 +22,13 @@ use TYPO3\CMS\Core\LinkHandling\LinkService;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Service\TypoLinkCodecService;
+use TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface;
 
 /**
  * Move '<link ...' syntax to '<a href' in rte fields
  * @internal This class is only meant to be used within EXT:install and is not part of the TYPO3 Core API.
  */
-class RteLinkSyntaxUpdater implements \TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface
+class RteLinkSyntaxUpdater implements RowUpdaterInterface
 {
     /**
      * Table list with field list that may have links them

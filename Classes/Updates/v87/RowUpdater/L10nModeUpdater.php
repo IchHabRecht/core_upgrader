@@ -22,13 +22,14 @@ use TYPO3\CMS\Core\DataHandling\Localization\State;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Versioning\VersionState;
+use TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface;
 
 /**
  * Migrate values for database records having columns
  * using "l10n_mode" set to "mergeIfNotBlank" or "exclude".
  * @internal This class is only meant to be used within EXT:install and is not part of the TYPO3 Core API.
  */
-class L10nModeUpdater implements \TYPO3\CMS\Install\Updates\RowUpdater\RowUpdaterInterface
+class L10nModeUpdater implements RowUpdaterInterface
 {
     /**
      * List of tables with information about to migrate fields.
