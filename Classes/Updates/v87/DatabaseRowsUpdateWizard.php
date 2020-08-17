@@ -47,4 +47,12 @@ class DatabaseRowsUpdateWizard extends \TYPO3\CMS\Install\Updates\DatabaseRowsUp
         ImageCropUpdater::class,
         RteLinkSyntaxUpdater::class,
     ];
+
+    /**
+     * @return string Unique identifier of this updater
+     */
+    public function getIdentifier(): string
+    {
+        return 'databaseRowsUpdateWizard87';
+    }
 }

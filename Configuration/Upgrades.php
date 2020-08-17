@@ -10,8 +10,8 @@ return [
         'frontendUserImageUpdateWizard' => [
             'frontendUserImageUpdateWizard' => \TYPO3\CMS\v87\Install\Updates\FrontendUserImageUpdateWizard::class,
         ],
-        'databaseRowsUpdateWizard' => [
-            'databaseRowsUpdateWizard' => \TYPO3\CMS\v87\Install\Updates\DatabaseRowsUpdateWizard::class,
+        'databaseRowsUpdateWizard87' => [
+            'databaseRowsUpdateWizard87' => \TYPO3\CMS\v87\Install\Updates\DatabaseRowsUpdateWizard::class,
         ],
         'commandLineBackendUserRemovalUpdate' => [
             'commandLineBackendUserRemovalUpdate' => \TYPO3\CMS\v87\Install\Updates\CommandLineBackendUserRemovalUpdate::class,
