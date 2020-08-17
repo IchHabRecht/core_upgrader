@@ -1,3 +1,9 @@
+2020-08-17         [RELEASE] Release of core_upgrader 1.2.1 (Nicole Cordes)
+2020-08-17 c8ae286 Use TYPO3 RowUpdaterInterface (Nicole Cordes)
+2020-08-17 6d5ccae Streamline wizard identifier (Nicole Cordes)
+2020-08-17 491b93d Remove ext_emconf.php changes (Nicole Cordes)
+2020-08-11 4a165f4 [BUGFIX] DatabaseRowsUpdateWizard of TYPO3 V8 fixed (Mohsin Khan)
+
 2020-08-05         [RELEASE] Release of core_upgrader 1.2.0 (Nicole Cordes)
 2020-08-05 82b356f [TASK] Update supporting files to EXT:my_skeleton 0.4.0 (Nicole Cordes)
 2020-08-03 029f0ce [FEATURE] Add missing TYPO3\CMS updates (Nicole Cordes)
