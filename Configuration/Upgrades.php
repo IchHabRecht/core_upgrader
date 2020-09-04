@@ -121,6 +121,9 @@ $additionalUpgrades = [
         'TYPO3\\CMS\\FrontendLogin\\Updates\\MigrateFeloginPluginsCtype' => [
             'TYPO3\\CMS\\FrontendLogin\\Updates\\MigrateFeloginPluginsCtype' => TYPO3\CMS\FrontendLogin\Updates\MigrateFeloginPluginsCtype::class,
         ],
+        'formFileExtension' => [
+            'formFileExtension' => \TYPO3\CMS\Form\Hooks\FormFileExtensionUpdate::class,
+        ],
     ],
 ];
 
