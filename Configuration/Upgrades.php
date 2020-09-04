@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-return [
+$upgrades = [
     'v8.7' => [
         'wizardDoneToRegistry' => [
             'wizardDoneToRegistry' => \TYPO3\CMS\v87\Install\Updates\WizardDoneToRegistry::class,
@@ -110,6 +110,11 @@ return [
         'databaseRowsUpdateWizard' => [
             'databaseRowsUpdateWizard' => \TYPO3\CMS\Install\Updates\DatabaseRowsUpdateWizard::class,
         ],
+    ],
+];
+
+$additionalUpgrades = [
+    'v10.4' => [
         'TYPO3\\CMS\\Felogin\\Updates\\MigrateFeloginPlugins' => [
             'TYPO3\\CMS\\Felogin\\Updates\\MigrateFeloginPlugins' => TYPO3\CMS\Felogin\Updates\MigrateFeloginPlugins::class,
         ],
@@ -118,3 +123,15 @@ return [
         ],
     ],
 ];
+
+foreach ($additionalUpgrades as $version => $versionUpgrades) {
+    foreach ($versionUpgrades as $key => $upgradeArray) {
+        foreach ($upgradeArray as $identifier => $class) {
+            if (class_exists($class)) {
+                $upgrades[$version][$key] = $upgradeArray;
+            }
+        }
+    }
+}
+
+return $upgrades;
