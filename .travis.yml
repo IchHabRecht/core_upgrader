@@ -31,7 +31,8 @@ jobs:
             before_install:
                 - if php -i | grep -v TRAVIS_CMD | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
             install:
-                - composer require --no-progress --no-suggest nimut/typo3-complete:"$TYPO3"
+                - composer require --no-progress --no-suggest --no-update nimut/typo3-complete:"$TYPO3"
+                - composer update
                 - git checkout composer.json
             before_script:
                 - mkdir -p .Build/public/typo3conf/ext/
@@ -117,7 +118,8 @@ jobs:
                             echo;
                             echo;
                             git clean -Xdf;
-                            composer require --dev --no-progress --no-suggest nimut/typo3-complete:"$TYPO3";
+                            composer require --dev --no-progress --no-suggest --no-update nimut/typo3-complete:"$TYPO3";
+                            composer update;
                             git checkout composer.json;
                             VERSION=${TYPO3//[!0-9]/};
 
@@ -179,7 +181,8 @@ jobs:
             stage: 🏃 prefer-lowest tests
             if: type = cron
             install:
-                - composer require --no-progress --no-suggest --prefer-lowest nimut/typo3-complete:"$TYPO3"
+                - composer require --no-progress --no-suggest --no-update --prefer-lowest nimut/typo3-complete:"$TYPO3"
+                - composer update
                 - git checkout composer.json
             php: 7.4
             env: TYPO3=^10.4
