@@ -19,16 +19,6 @@ class UpgradeCommand extends Command
      */
     private $commandDispatcher;
 
-    public function __construct(string $name = null, CommandDispatcher $commandDispatcher = null)
-    {
-        parent::__construct($name);
-
-        if ($commandDispatcher === null) {
-            $commandDispatcher = CommandDispatcher::createFromCommandRun();
-        }
-        $this->commandDispatcher = $commandDispatcher;
-    }
-
     protected function configure()
     {
         $this->setDescription('Run necessary upgrade wizards');
@@ -42,6 +32,8 @@ class UpgradeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->commandDispatcher = CommandDispatcher::createFromCommandRun();
+
         $io = new SymfonyStyle($input, $output);
 
         $this->runUpdatePrepare($io);
