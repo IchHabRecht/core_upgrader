@@ -1,3 +1,7 @@
+2021-02-21         [RELEASE] Release of core_upgrader 1.3.1 (Nicole Cordes)
+2021-02-19 bca9706 [BUGFIX] Prevent errors in EXT:scheduler backend module (Nicole Cordes)
+2020-10-25 1ac3de5 [TASK] Update supporting files to EXT:my_skeleton 0.5.0 (Nicole Cordes)
+
 2020-09-08         [RELEASE] Release of core_upgrader 1.3.0 (Nicole Cordes)
 2020-09-04 46bbe55 [FEATURE] Add additional EXT:form upgrade wizard (Nicole Cordes)
 2020-09-04 9fe865c [BUGFIX] Ensure additional upgrade wizards exists (Nicole Cordes)
