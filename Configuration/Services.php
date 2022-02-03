@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return function (ContainerConfigurator $configurator) {
@@ -10,8 +12,7 @@ return function (ContainerConfigurator $configurator) {
             ->tag('console.command', [
                 'command' => 'coreupgrader:upgrade',
                 'runLevel' => \Helhum\Typo3Console\Core\Booting\RunLevel::LEVEL_COMPILE,
-                'schedulable' => false
+                'schedulable' => false,
             ]);
     }
-
 };
