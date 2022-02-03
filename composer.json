@@ -28,7 +28,9 @@
     "autoload": {
         "psr-4": {
             "IchHabRecht\\Upgrader\\": "Classes/",
-            "TYPO3\\CMS\\v87\\Install\\Updates\\": "Classes/Updates/v87/"
+            "TYPO3\\CMS\\v87\\Install\\Updates\\": "Classes/Updates/v87/",
+            "TYPO3\\CMS\\v95\\Install\\Updates\\": "Classes/Updates/v95/",
+            "TYPO3\\CMS\\v104\\Install\\Updates\\": "Classes/Updates/v104/"
         }
     },
     "replace": {
