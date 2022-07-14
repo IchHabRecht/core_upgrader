@@ -4,11 +4,11 @@
 [![Build Status](https://img.shields.io/travis/IchHabRecht/core_upgrader/master.svg)](https://travis-ci.org/IchHabRecht/core_upgrader)
 [![StyleCI](https://styleci.io/repos/263364343/shield?branch=master)](https://styleci.io/repos/263364343)
 
-Run upgrade wizards for multiple TYPO3 versions (to 10.4) at once.
+Run upgrade wizards for multiple TYPO3 versions (to 11.5) at once.
 
 ## Features
 
-This extension allows to upgrade the TYPO3 core from v7.6 to v10.4 in one step.
+This extension allows to upgrade the TYPO3 core from v7.6 to v11.5 in one step.
 
 ## Installation
 
@@ -21,18 +21,14 @@ The typo3cms binary will be installed in the specified bin-dir (by default `vend
 
 ## Usage
 
-1. You need to activate the extension:
+1. Now you can run all update wizards:
 
-    `typo3cms install:generatepackagestates`
+    `typo3cms coreupgrader:upgrade`
 
-2. Now you can run all update wizards:
+2. The upgrade command runs necessary TYPO3 upgrade wizards.\
+   It is recommended to run TYPO3 Console upgrade command afterwards to execute confirmable and extension wizards.
 
-     `typo3cms coreupgrader:upgrade`
-
- 3. The upgrade command runs necessary TYPO3 upgrade wizards.\
-    It is recommended to run TYPO3 Console upgrade command afterwards to execute confirmable and extension wizards. 
-    
-     `typo3cms upgrade:run all`
+    `typo3cms upgrade:run all`
 
 ## Community
 

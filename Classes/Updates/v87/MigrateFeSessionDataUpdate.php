@@ -136,7 +136,6 @@ class MigrateFeSessionDataUpdate implements UpgradeWizardInterface
         // Move records from fe_session_data that are not in fe_sessions
         $queryBuilder = $connection->createQueryBuilder();
         $selectSQL = $queryBuilder->select('fe_session_data.hash', 'fe_session_data.content', 'fe_session_data.tstamp')
-            ->addSelectLiteral('1')
             ->from('fe_session_data')
             ->leftJoin(
                 'fe_session_data',
@@ -151,12 +150,11 @@ class MigrateFeSessionDataUpdate implements UpgradeWizardInterface
             ->getSQL();
 
         $insertSQL = sprintf(
-            'INSERT INTO %s(%s, %s, %s, %s) %s',
+            'INSERT INTO %s(%s, %s, %s) %s',
             $connection->quoteIdentifier('fe_sessions'),
             $connection->quoteIdentifier('ses_id'),
             $connection->quoteIdentifier('ses_data'),
             $connection->quoteIdentifier('ses_tstamp'),
-            $connection->quoteIdentifier('ses_anonymous'),
             $selectSQL
         );
 

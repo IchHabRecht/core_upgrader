@@ -16,6 +16,7 @@ namespace TYPO3\CMS\v87\Install\Updates;
  */
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Resource\Exception;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -60,13 +61,19 @@ class FileReferenceUpdate implements UpgradeWizardInterface
     public function updateNecessary(): bool
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_refindex');
-        return (bool)$queryBuilder->count('hash')
+        $queryBuilder->count('hash')
             ->from('sys_refindex')
             ->where(
                 $queryBuilder->expr()->eq('ref_table', $queryBuilder->createNamedParameter('_FILE', \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('softref_key', $queryBuilder->createNamedParameter('typolink_tag', \PDO::PARAM_STR)),
-                $queryBuilder->expr()->eq('deleted', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT))
-            )
+                $queryBuilder->expr()->eq('softref_key', $queryBuilder->createNamedParameter('typolink_tag', \PDO::PARAM_STR))
+            );
+
+        // Following condition is required for TYPO3 11.0+ Versions, because of BC in TYPO3 v. 11.0, which removes "deleted" column in "sys_refindex" table.
+        // See: https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Breaking-93029-DroppedDeletedFieldFromSys_refindex.html
+        if (GeneralUtility::makeInstance(Typo3Version::class)->getMajorVersion() < 11) {
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('deleted', $queryBuilder->createNamedParameter(0, \PDO::PARAM_INT)));
+        }
+        return (bool)$queryBuilder
             ->execute()
             ->fetchColumn(0);
     }
@@ -104,7 +111,7 @@ class FileReferenceUpdate implements UpgradeWizardInterface
                 $fileReference = $record['ref_string'];
             } else {
                 try {
-                    $fileObject = ResourceFactory::getInstance()->retrieveFileOrFolderObject($record['ref_string']);
+                    $fileObject = GeneralUtility::makeInstance(ResourceFactory::class)->retrieveFileOrFolderObject($record['ref_string']);
                     if ($fileObject instanceof File) {
                         $fileReference = $fileObject->getUid();
                     }
