@@ -31,42 +31,15 @@ jobs:
             before_install:
                 - if php -i | grep -v TRAVIS_CMD | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
             install:
-                - composer require --no-progress --no-suggest --no-update nimut/typo3-complete:"$TYPO3"
+                - composer require --no-progress --no-suggest --no-update helhum/typo3-console:"^4.9"
+                - composer require --no-progress --no-suggest --no-update typo3/cms-core:"^7.6"
+                - composer require --no-progress --no-suggest --no-update typo3/cms-frontend:"^7.6"
+                - composer require --no-progress --no-suggest --no-update typo3/cms-install:"^7.6"
+                - composer require --no-progress --no-suggest --no-update typo3/minimal:"^7.6"
                 - composer update
                 - git checkout composer.json
             before_script:
-                - mkdir -p .Build/public/typo3conf/ext/
-                - if [ ! -L .Build/public/typo3conf/ext/core_upgrader ]; then ln -snvf ../../../../. .Build/public/typo3conf/ext/core_upgrader; fi
-                - export TYPO3_PATH_ROOT=$PWD/.Build/public
-                - export typo3DatabaseName=typo3
-                - export typo3DatabaseHost=localhost
-                - export typo3DatabaseUsername=root
-                - export typo3DatabasePassword=
-            script:
-                - >
-                    if [ -d "Tests/Unit" ]; then
-                        echo;
-                        echo "Running unit tests";
-                        echo;
-                        echo;
-                        .Build/bin/phpunit --bootstrap .Build/vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php --testsuite unit;
-                    fi
-
-                - >
-                    if [ -d "Tests/Functional" ]; then
-                        echo;
-                        echo "Running functional tests";
-                        echo;
-                        echo;
-                        find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --bootstrap .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php {}';
-                    fi
-
-                - >
-                    echo;
-                    echo "Running php lint";
-                    echo;
-                    echo;
-                    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;;
+                - .Build/bin/typo3cms install:setup --non-interactive --database-host-name=localhost --database-user-name=root --database-user-password="" --database-name=typo3 --admin-user-name=admin --admin-password=password --site-setup-type=site
             php: 7.4
             env: TYPO3=^10.4
         -   <<: *tests
